@@ -13,6 +13,7 @@ private:
     void set_tot(){total_val = shares * share_val;}
 public:
     Stock();
+    Stock(int x);
     ~Stock();
 public:
    void acquire(const std::string & co, long n, double pr);

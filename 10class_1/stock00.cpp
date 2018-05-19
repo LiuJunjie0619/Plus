@@ -7,6 +7,12 @@ Stock::Stock()
 {
 
 }
+
+Stock::Stock(int x)
+{
+    std::cout << "一个参数的初始化：" << x << std::endl;
+}
+
 Stock::~Stock()
 {
 
