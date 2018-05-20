@@ -58,7 +58,7 @@ int main()
         cout << "This program used " << MyString::HowMany() << " MyString objects.Bye.\n";
     }
     else
-        cout << "NO input!Bye.\n";
+        cout << "No input!Bye.\n";
     return 0;
 
     return 0;
