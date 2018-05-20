@@ -17,7 +17,7 @@ public:
     {
         cout << "copy A" << endl;
     }
-    A& operator=(const char * s);
+    A& operator=(const A & another);
     ~A()
     {
         cout << "~A()" << this->str << endl;
@@ -26,22 +26,22 @@ public:
 };
 
 
-A& A::operator=(const char * s)
+A& A::operator=(const A & another)
 {
-    cout << "operator=" << s <<endl;
+    cout << "operator=" << another.str <<endl;
 //    if(this == & another)
 //        return *this;
     delete[] str;
-    int len = strlen(s);
+    int len = strlen(another.str);
     str = new char[len + 1];
-    strcpy(str,s);
+    strcpy(str,another.str);
     return *this;
 }
 
 int main()
 {
     A a("abc");
-    a = "test";
+    a = "xyz";
 //    string str = 0;
 //    string s1 = NULL;
 //    string s2 = nullptr;
