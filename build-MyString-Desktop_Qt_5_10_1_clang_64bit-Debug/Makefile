@@ -51,9 +51,11 @@ OBJECTS_DIR   = ./
 ####### Files
 
 SOURCES       = ../MyString/main.cpp \
-		../MyString/mystring.cpp 
+		../MyString/mystring.cpp \
+		../MyString/main2.cpp 
 OBJECTS       = main.o \
-		mystring.o
+		mystring.o \
+		main2.o
 DIST          = ../../../../Qt5.10.1/5.10.1/clang_64/mkspecs/features/spec_pre.prf \
 		../../../../Qt5.10.1/5.10.1/clang_64/mkspecs/qdevice.pri \
 		../../../../Qt5.10.1/5.10.1/clang_64/mkspecs/features/device_config.prf \
@@ -212,6 +214,7 @@ DIST          = ../../../../Qt5.10.1/5.10.1/clang_64/mkspecs/features/spec_pre.p
 		../../../../Qt5.10.1/5.10.1/clang_64/mkspecs/features/qt_config.prf \
 		../../../../Qt5.10.1/5.10.1/clang_64/mkspecs/macx-clang/qmake.conf \
 		../../../../Qt5.10.1/5.10.1/clang_64/mkspecs/features/spec_post.prf \
+		../MyString/.qmake.stash \
 		../../../../Qt5.10.1/5.10.1/clang_64/mkspecs/features/exclusive_builds.prf \
 		../../../../Qt5.10.1/5.10.1/clang_64/mkspecs/features/mac/sdk.prf \
 		../../../../Qt5.10.1/5.10.1/clang_64/mkspecs/features/toolchain.prf \
@@ -234,7 +237,8 @@ DIST          = ../../../../Qt5.10.1/5.10.1/clang_64/mkspecs/features/spec_pre.p
 		../../../../Qt5.10.1/5.10.1/clang_64/mkspecs/features/yacc.prf \
 		../../../../Qt5.10.1/5.10.1/clang_64/mkspecs/features/lex.prf \
 		../MyString/MyString.pro mystring.h ../MyString/main.cpp \
-		../MyString/mystring.cpp
+		../MyString/mystring.cpp \
+		../MyString/main2.cpp
 QMAKE_TARGET  = MyString
 DESTDIR       = 
 TARGET        = MyString
@@ -409,6 +413,7 @@ Makefile: ../MyString/MyString.pro ../../../../Qt5.10.1/5.10.1/clang_64/mkspecs/
 		../../../../Qt5.10.1/5.10.1/clang_64/mkspecs/features/qt_config.prf \
 		../../../../Qt5.10.1/5.10.1/clang_64/mkspecs/macx-clang/qmake.conf \
 		../../../../Qt5.10.1/5.10.1/clang_64/mkspecs/features/spec_post.prf \
+		.qmake.stash \
 		../../../../Qt5.10.1/5.10.1/clang_64/mkspecs/features/exclusive_builds.prf \
 		../../../../Qt5.10.1/5.10.1/clang_64/mkspecs/features/mac/sdk.prf \
 		../../../../Qt5.10.1/5.10.1/clang_64/mkspecs/features/toolchain.prf \
@@ -590,6 +595,7 @@ Makefile: ../MyString/MyString.pro ../../../../Qt5.10.1/5.10.1/clang_64/mkspecs/
 ../../../../Qt5.10.1/5.10.1/clang_64/mkspecs/features/qt_config.prf:
 ../../../../Qt5.10.1/5.10.1/clang_64/mkspecs/macx-clang/qmake.conf:
 ../../../../Qt5.10.1/5.10.1/clang_64/mkspecs/features/spec_post.prf:
+.qmake.stash:
 ../../../../Qt5.10.1/5.10.1/clang_64/mkspecs/features/exclusive_builds.prf:
 ../../../../Qt5.10.1/5.10.1/clang_64/mkspecs/features/mac/sdk.prf:
 ../../../../Qt5.10.1/5.10.1/clang_64/mkspecs/features/toolchain.prf:
@@ -635,6 +641,7 @@ clean: compiler_clean
 
 distclean: clean 
 	-$(DEL_FILE) $(TARGET) 
+	-$(DEL_FILE) .qmake.stash
 	-$(DEL_FILE) Makefile
 
 
@@ -656,11 +663,14 @@ compiler_clean:
 
 ####### Compile
 
-main.o: ../MyString/main.cpp 
+main.o: ../MyString/main.cpp ../MyString/mystring.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../MyString/main.cpp
 
 mystring.o: ../MyString/mystring.cpp ../MyString/mystring.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mystring.o ../MyString/mystring.cpp
+
+main2.o: ../MyString/main2.cpp ../MyString/mystring.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main2.o ../MyString/main2.cpp
 
 ####### Install
 

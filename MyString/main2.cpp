@@ -3,7 +3,7 @@
 
 const int ArSize = 10;
 const int MaxLen = 81;
-int main1()
+int main()
 {
     using std::cout;
     using std::cin;
@@ -44,17 +44,17 @@ int main1()
         for(i=0;i<total;i++)
             cout << sayings[i][0] << ":" << sayings[i] << endl;
 
-        int shortest = 0;
-        int first = 0;
+        MyString * shortest = &sayings[0];
+        MyString * first = &sayings[0];
         for(i=1;i<total;i++)
         {
-            if(sayings[i].length() < sayings[shortest].length())
-                shortest = i;
-            if(sayings[i] < sayings[first])
-                first = i;
+            if(sayings[i].length() < shortest->length())
+                shortest = &sayings[i];
+            if(sayings[i] < *first)
+                first = &sayings[i];
         }
-        cout << "Shortest saying:\n" << sayings[shortest] << endl;
-        cout << "First alphabetically:\n" << sayings[first] << endl;
+        cout << "Shortest saying:\n" << * shortest << endl;
+        cout << "First alphabetically:\n" << * first << endl;
         cout << "This program used " << MyString::HowMany() << " MyString objects.Bye.\n";
     }
     else
