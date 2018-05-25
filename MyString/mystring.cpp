@@ -9,6 +9,7 @@ int MyString::num_strings = 0;
 MyString::MyString()
 {
     str = new char[1];
+    memset(str,0,sizeof(char) * 1);
     str[0] = '\0';
     len = 4;
     MyString::num_strings++;
@@ -22,6 +23,7 @@ MyString::MyString(const char * s)
     len = std::strlen(s);
     delete[] str;
     str = new char[len + 1];
+    memset(str,0,sizeof(char) * (len + 1));
     std::strcpy(str,s);
     num_strings++;
 #if level
@@ -32,8 +34,11 @@ MyString::MyString(const char * s)
 MyString::MyString(const MyString & another)
 {
     len = another.len;
-    delete[] str;
+        delete[] str;
     str = new char[len + 1];
+    if(str == nullptr)
+        std::cout << "new is failed!";
+    memset(str,0,sizeof(char) * (len + 1));
     std::strcpy(str,another.str);
     num_strings++;
 #if level
@@ -57,6 +62,7 @@ MyString & MyString::operator=(const MyString & another)
     len = another.len;
     delete[] str;
     str = new char[len + 1];
+    memset(str,0,sizeof(char) * (len + 1));
     std::strcpy(str,another.str);
 #if level
     std::cout << "MyString & MyString::operator=(const MyString & another)" << endl;
@@ -69,6 +75,7 @@ MyString & MyString::operator=(const char * s)
     len = std::strlen(s);
     delete[] str;
     str = new char[len + 1];
+    memset(str,0,sizeof(char) * (len + 1));
     std::strcpy(str,s);
 #if level
     std::cout << "MyString & MyString::operator=(const char * s)" << endl;

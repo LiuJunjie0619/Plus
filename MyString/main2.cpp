@@ -55,6 +55,14 @@ int main()
         }
         cout << "Shortest saying:\n" << * shortest << endl;
         cout << "First alphabetically:\n" << * first << endl;
+
+        std::srand(std::time(0));
+        int choice = std::rand() % total;
+        std::cout << "choice index:" << choice << std::endl;
+        MyString * favorite = nullptr;
+        favorite = new MyString(sayings[choice]);
+        std::cout << "My favorite saying:\n" << *favorite << std::endl;
+
         cout << "This program used " << MyString::HowMany() << " MyString objects.Bye.\n";
     }
     else
