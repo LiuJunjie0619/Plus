@@ -20,5 +20,13 @@ int main()
         vp[i]=make_int(rand() % 1000);
     vp.push_back(make_int(rand()%1000));
     for_each(vp.begin(),vp.end(),show);
+    std::cout << "------------------------------------" << std::endl;
+    std::vector<std::unique_ptr<int> >::iterator vis;       //迭代器
+    vis = vp.begin();
+    for(;vis!=vp.end();vis++)
+    {
+        std::cout << **vis << std::endl;
+    }
+
     return 0;
 }
