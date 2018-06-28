@@ -7,6 +7,24 @@ struct Review
     std::string title;
     int rating;
 };
+bool operator <(const Review & r1,const Review & r2)
+{
+    if(r1.title < r2.title)
+        return true;
+    else if(r1.title == r2.title && r1.rating==r2.rating)
+        return true;
+    else
+        return false;
+}
+
+bool WorseThan(const Review & r1,const Review & r2)
+{
+    if(r1.rating < r2.rating)
+        return true;
+    else
+        return false;
+}
+
 bool FillReview(Review &rr);
 void ShowReview(const Review & rr);
 
@@ -47,7 +65,34 @@ int main()
             {
                 ShowReview(*pr);
             }
+
+            std::cout << "-------------------------------------------" << std::endl;
+            std::for_each(books.begin(),books.end(),ShowReview);
+
+            books.erase(books.begin(),books.end());
+            std::cout << "-------------------------------------------" << std::endl;
+            std::for_each(books.begin(),books.end(),ShowReview);
         }
+        std::cout << "***************************************" << std::endl;
+        books.swap(oldlist);
+        for(pr=books.begin();pr!=books.end();pr++)
+            ShowReview(*pr);
+
+        std::cout << "***************************************" << std::endl;
+        std::random_shuffle(books.begin(),books.end());
+        std::for_each(books.begin(),books.end(),ShowReview);
+
+        std::cout << "***************************************" << std::endl;
+        std::sort(books.begin(),books.end());
+        std::for_each(books.begin(),books.end(),ShowReview);
+
+        std::cout << "++++++++++++++++++++++++++++++++++++++" << std::endl;
+        std::sort(books.begin(),books.end(),WorseThan);
+        std::for_each(books.begin(),books.end(),ShowReview);
+    }
+    else
+    {
+        std::cout << "Nothing entered,nothing gained." << std::endl;
     }
 
     return 0;
