@@ -53,6 +53,19 @@ int main()
     std::sort(dice.begin(),dice.end(),::moreThan<int>);
     std::copy(dice.begin(),dice.end(),std::ostream_iterator<int,char>(std::cout,"\n"));
 
+    std::cout << "++++++++++++++++++++++++++++++++" << std::endl;
+    std::vector<int> dice2(10);
+    std::copy(std::istream_iterator<int,char>(std::cin),std::istream_iterator<int,char>(),dice2.begin());
+    std::cout << "++++++++++++++++++++++++++++++++" << std::endl;
+    std::copy(dice2.begin(),dice2.end(),std::ostream_iterator<int,char>(std::cout,"\n"));
+
+    std::cout << "+++++++++++++++reverse+++++++++++++++++" << std::endl;
+    std::copy(dice2.rbegin(),dice2.rend(),std::ostream_iterator<int,char>(std::cout,"\n"));
+
+    std::reverse_iterator<std::vector<int>::iterator> out_reverse;
+    out_reverse = dice2.rbegin();
+    std::copy(out_reverse,dice2.rend(),std::ostream_iterator<int,char>(std::cout,"\n"));
+
     return 0;
 }
 
