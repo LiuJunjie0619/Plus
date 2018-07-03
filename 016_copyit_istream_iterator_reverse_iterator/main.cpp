@@ -2,6 +2,12 @@
 #include <iterator>
 #include <vector>
 
+template <typename T>
+void output(const T & item)
+{
+    std::cout << item << " ";
+}
+
 int main()
 {
     int casts[10] = {6,7,2,9,4,11,8,7,10,5};
@@ -23,6 +29,18 @@ int main()
     std::vector<int>::reverse_iterator ri;
     for(ri = dice.rbegin();ri!=dice.rend();ri++)
         std::cout << *ri << " ";
+    std::cout << std::endl;
+
+    std::cout << "back_insert_iterator\n";
+    std::back_insert_iterator<std::vector<int> > back_iter(dice);
+    std::copy(casts,casts+3,back_iter);
+    std::for_each(dice.begin(),dice.end(),output<int>);
+    std::cout << std::endl;
+
+    std::cout << "insert_iterator\n";
+    std::insert_iterator<std::vector<int> > insert_iter(dice,dice.begin());
+    std::copy(casts+8,casts+10,insert_iter);
+    std::for_each(dice.begin(),dice.end(),output<int>);
     std::cout << std::endl;
 
     return 0;
