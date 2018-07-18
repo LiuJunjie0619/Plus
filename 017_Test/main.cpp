@@ -51,6 +51,13 @@ int main()
     std::cout.setf(std::ios_base::showpoint);
     std::cout << f1 << std::endl;
 
+    std::cout << "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$" << std::endl;
+    char ch[20];
+    std::cin.get(ch,6);
+    std::cout << ch << std::endl;
+    std::cin.ignore(2,'\n');
 
+    std::cin.get(ch,6);
+    std::cout << ch << std::endl;
     return 0;
 }
